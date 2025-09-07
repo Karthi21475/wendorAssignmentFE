@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function SlotPicker({serviceId, days, slots }) {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const [error,setError]=useState('');
     const navigate=useNavigate();
 
     const handleBooking = async () => {
@@ -17,6 +18,9 @@ function SlotPicker({serviceId, days, slots }) {
             },{withCredentials:true});
             if(res.data.message==="No token, access denied!"){
                 navigate('/login')
+            }
+            else if(res.data.message==="Can't book another slot while a slot is already booked"){
+                setError("Can't book another slot while a slot is already booked");
             }
             navigate('/my-bookings');
             } catch (err) {
@@ -60,7 +64,7 @@ function SlotPicker({serviceId, days, slots }) {
             ))}
             </div>
         )}
-
+        {error.length>0 && <p className="error" >{error}</p>}
         <button
             className="book-btn"
             disabled={!selectedDay || !selectedSlot}
