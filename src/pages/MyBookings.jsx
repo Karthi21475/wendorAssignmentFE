@@ -1,10 +1,17 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react'
 import Nav from '../components/Nav';
-
+import ClipLoader from 'react-spinners/ClipLoader';
 function MyBookings() {
 
     const [booking,setBooking]=useState([]);
+    const [loader,setLoader]=useState();
+
+    async function handleDel(){
+        setLoader(true)
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
+        setLoader(false)
+    }
 
     useEffect(()=>{
         async function getData(){
@@ -13,7 +20,7 @@ function MyBookings() {
             console.log(res.data.bookings);
         }
         getData();
-    },[])
+    },[loader])
 
     return (
     <div>
@@ -21,7 +28,7 @@ function MyBookings() {
         <div className='flex justify-center'>
             <h1 className='text-[36px]'>Booking Details</h1>
         </div>
-        {booking.map((book)=>{
+        {!booking.length>0?"No Booked Slots":booking.map((book)=>{
             return <div key={book._id} className='card'>
             <div>
                 <p><strong>Booking ID:</strong> {book._id}</p>
@@ -36,15 +43,13 @@ function MyBookings() {
                     </ul>
                 </div>
             </div>
-
-            <h3>Booked Slots</h3>
             <ul>
-                <li className='card'>
+                <li className='provider-card'>
                     <p><strong>Date:</strong> {book.slot.date}</p>
                     <p><strong>Time:</strong> {book.slot.time}</p>
                 </li>
             </ul>
-            <button className='btn-del'>Cancel</button>
+            <button className='btn-del' onClick={()=>{handleDel()}}>{loader?<ClipLoader/>:"Cancel"}</button>
             </div>
         })}
     </div>

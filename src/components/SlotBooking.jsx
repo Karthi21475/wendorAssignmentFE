@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "../styles/SlotPicker.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function SlotPicker({serviceId, days, slots }) {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const navigate=useNavigate();
 
     const handleBooking = async () => {
         
@@ -13,6 +15,7 @@ function SlotPicker({serviceId, days, slots }) {
                 serviceId: serviceId,
                 slot: {time:selectedSlot,date:fullDate}
             },{withCredentials:true});
+            navigate('/my-bookings');
             } catch (err) {
                 console.log(err);
             }

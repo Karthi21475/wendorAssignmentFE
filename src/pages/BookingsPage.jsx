@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import '../styles/BookingPage.css'
 import SlotPicker from "../components/SlotBooking";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Nav from "../components/Nav";
 function ServiceCard() {
     const [service, setService] = useState([]);
     const {id}=useParams();
     const days = generateDays(7);
+    const navigate=useNavigate();
 
     const slots = {};
     days.forEach(day => {
