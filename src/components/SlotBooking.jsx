@@ -2,14 +2,16 @@ import { useState } from "react";
 import "../styles/SlotPicker.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 function SlotPicker({serviceId, days, slots }) {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSlot, setSelectedSlot] = useState(null);
     const [error,setError]=useState('');
+    const [loader,setLoader]=useState(false);
     const navigate=useNavigate();
 
     const handleBooking = async () => {
-        
+        setLoader(true);
         try {
             const fullDate = days.find(d => d.date === selectedDay).fullDate;
             const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/bookings`, {
@@ -26,6 +28,7 @@ function SlotPicker({serviceId, days, slots }) {
             } catch (err) {
                 console.log(err);
             }
+            setLoader(false);
     };
 
     return (
@@ -70,7 +73,7 @@ function SlotPicker({serviceId, days, slots }) {
             disabled={!selectedDay || !selectedSlot}
             onClick={handleBooking}
         >
-            Book an appointment
+            {loader?<ClipLoader/>:"Book an appointment"}
         </button>
         </div>
     );
