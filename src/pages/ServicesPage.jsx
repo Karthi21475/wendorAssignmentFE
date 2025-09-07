@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/ServicesPage.css'
-import ServiceCard from '../components/ServiceCard'
 import Nav from '../components/Nav';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,7 +10,7 @@ function ServicesPage() {
 
     useEffect(()=>{
         const getData=async()=>{
-            const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/services/${id}`)
+            const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/services${id?`/${id}`:""}`)
             setServices(res.data);
         }
         getData();

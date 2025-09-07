@@ -15,6 +15,9 @@ function SlotPicker({serviceId, days, slots }) {
                 serviceId: serviceId,
                 slot: {time:selectedSlot,date:fullDate}
             },{withCredentials:true});
+            if(res.data.message==="No token, access denied!"){
+                navigate('/login')
+            }
             navigate('/my-bookings');
             } catch (err) {
                 console.log(err);

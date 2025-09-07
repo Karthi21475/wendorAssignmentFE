@@ -13,8 +13,10 @@ function App() {
       <Route path='/login' element={<LoginPage/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/services/:id' element={<ServicesPage/>}></Route>
+      <Route path='/services' element={<ServicesPage/>}></Route>
       <Route path='/bookings/:id' element={<BookingsPage/>} ></Route>
       <Route path='/my-bookings' element={<MyBookings/>} ></Route>
+      <Route path='*' element={<h1>NOT FOUND</h1>} ></Route>
     </Routes>
   )
 }

@@ -33,19 +33,10 @@ function Nav() {
             </div>
             <ul className="nav-links">
                 <li><Link to='/'>Home</Link></li>
+                <li><Link to='/services'>Services</Link></li>
                 <li><Link to='/my-bookings'>Bookings</Link></li>
             </ul>
-            {token?
-            <div className='profile-cont'>
-                <div className='profile-icon' onClick={()=>{setShow(!show)}}>
-                    <i className='bxr bx-user-circle scale-[2] '></i>
-                    <i className='bxr bx-caret-down'></i>  
-                </div>
-                <div className={`profile-menu ${!show?"hidden":"flex"}`} >
-                    <Link to="/profile">Profile</Link>
-                    <button className="btn" onClick={()=>handleClick()}>Logout</button>
-                </div>
-            </div>
+            {token?<button className="btn" onClick={()=>handleClick()}>Logout</button>
             :(<Link to='/login' className="btn1">Login</Link>)}
         </nav>
     </>

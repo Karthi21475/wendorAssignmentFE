@@ -2,22 +2,29 @@ import axios from 'axios';
 import React,{useEffect, useState} from 'react'
 import Nav from '../components/Nav';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { useNavigate } from 'react-router-dom';
 function MyBookings() {
 
     const [booking,setBooking]=useState([]);
     const [loader,setLoader]=useState();
+    const navigate=useNavigate();
 
     async function handleDel(){
         setLoader(true)
         await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
+        if(res.data.message==="No token, access denied!"){
+                navigate('/login')
+        }
         setLoader(false)
     }
 
     useEffect(()=>{
         async function getData(){
             const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
+            if(res.data.message==="No token, access denied!"){
+                navigate('/login')
+            }
             setBooking(res.data.bookings);
-            console.log(res.data.bookings);
         }
         getData();
     },[loader])
