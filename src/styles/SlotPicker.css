@@ -1,0 +1,92 @@
+.slot-picker {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #0a0a0a;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+  color: #e0e0e0;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+.slot-picker h2 {
+  margin-bottom: 1.5rem;
+  color: #3b82f6;
+}
+
+/* Day buttons */
+.days-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  width: 60px;
+  height: 80px;
+  border-radius: 30px;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-btn.active,
+.day-btn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Slot buttons */
+.slots-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.slot-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  border: 1px solid #3b82f6;
+  background: transparent;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slot-btn.active,
+.slot-btn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Book button */
+.book-btn {
+  background: #3b82f6;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.book-btn:disabled {
+  background: #1e293b;
+  cursor: not-allowed;
+}
+
+.book-btn:hover:not(:disabled) {
+  background: #2563eb;
+}

@@ -1,0 +1,18 @@
+.services-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    max-width:100vw;
+    gap:1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+@media (max-width:800px){
+    .services-container{
+        grid-template-columns: auto auto;
+    }
+}
+@media (max-width:540px){
+    .services-container{
+        grid-template-columns: auto;
+    }
+}

@@ -1,0 +1,83 @@
+/* ProvidersList.css */
+
+.providers-container {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #0a0a0a; /* deep black background */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 255, 0.15);
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.providers-container h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #3b82f6; /* tailwind blue-500 */
+  margin-bottom: 1.5rem;
+}
+
+.provider-card {
+  background: #111827; /* black-gray */
+  border: 1px solid #1e40af; /* deep blue */
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.provider-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.provider-card h3 {
+  font-size: 1.4rem;
+  color: #60a5fa; /* lighter blue */
+  margin-bottom: 0.5rem;
+}
+
+.provider-card p {
+  margin: 0.25rem 0;
+  color: #cbd5e1; /* light gray */
+  font-size: 0.95rem;
+}
+
+.slots-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.slots-list li {
+  background: #1e293b; /* slate dark */
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.slots-list li button {
+  background-color: #2563eb; /* blue-600 */
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.slots-list li button:hover {
+  background-color: #1d4ed8; /* darker blue */
+}
+
+.slots-list li span.booked {
+  color: #f87171; /* red-400 */
+  font-weight: bold;
+}

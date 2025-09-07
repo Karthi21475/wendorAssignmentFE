@@ -1,0 +1,15 @@
+.service-card{
+    display:flex;
+    flex-direction: column;
+    max-width:250px;
+    background-color: #1579e4;
+    flex:1 0 250px;
+    padding:1rem;
+    justify-self: start;
+}
+.service-card img{
+    object-fit: contain;
+}
+.service-card h1{
+    font-size:clamp(0.875rem, 1vw, 1rem);
+}
