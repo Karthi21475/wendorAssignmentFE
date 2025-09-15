@@ -25,6 +25,7 @@
   padding: 1rem 1.5rem;
   margin-bottom: 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .provider-card:hover {

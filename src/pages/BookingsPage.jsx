@@ -27,6 +27,7 @@ function ServiceCard() {
         <Nav/>
         <div className="providers-container">
             <div key={service._id} className="provider-card">
+                <button onClick={()=>{navigate(-1)}} className="cursor-pointer">Back</button>
                 <h3>
                     {service.name}
                 </h3>

@@ -33,8 +33,8 @@ function Nav() {
             </div>
             <ul className="nav-links">
                 <li><Link to='/'>Home</Link></li>
-                <li><Link to='/services'>Services</Link></li>
-                <li><Link to='/my-bookings'>Bookings</Link></li>
+                <li><Link to='/services'>All Services</Link></li>
+                <li><Link to='/my-bookings'>My Bookings</Link></li>
             </ul>
             {token?<button className="btn1" onClick={()=>handleClick()}>Logout</button>
             :(<Link to='/login' className="btn1">Login</Link>)}

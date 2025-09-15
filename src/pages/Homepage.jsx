@@ -8,30 +8,35 @@ function Homepage() {
   const categories = [
     {
       id: 1,
-      name: 'Spa'
+      name: 'Spa',
+      image:"spa.png"
     },
     {
       id: 2,
-      name: 'Salon'
+      name: 'Salon',
+      image:"salon.png"
     },
     {
       id: 3,
-      name: 'Home Cleaning'
+      name: 'Home Cleaning',
+      image:"homeCleaning.png"
     },
     {
       id: 4,
-      name: 'Plumbing'
+      name: 'Plumbing',
+      image:"plumbing.png"
     },
     {
       id: 5,
-      name: 'Appliance Repair'
+      name: 'Appliance Repair',
+      image:"applianceRepair.png"
     },
     {
       id: 6,
-      name: 'Electrician'
+      name: 'Electrician',
+      image:"electrician.png"
     }
   ];
-  const image="https://placehold.co/200x200";
 
   return (
     <>
@@ -43,7 +48,7 @@ function Homepage() {
           {categories.map((cat)=>{
             return (
               <div key={cat.id} className='provider-card flex flex-col items-center cursor-pointer' onClick={()=>{navigate(`/services/${cat.name}`)}}>
-                <img src={image} />
+                <img src={cat.image} />
                 <p>{cat.name}</p>
               </div>)
           })}

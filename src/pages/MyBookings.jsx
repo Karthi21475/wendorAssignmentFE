@@ -3,6 +3,7 @@ import React,{useEffect, useState} from 'react'
 import Nav from '../components/Nav';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useNavigate } from 'react-router-dom';
+import {toast} from "react-toastify";
 function MyBookings() {
 
     const [booking,setBooking]=useState([]);
@@ -11,9 +12,12 @@ function MyBookings() {
 
     async function handleDel(){
         setLoader(true)
-        await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
+        const res=await axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
         if(res.data.message==="No token, access denied!"){
                 navigate('/login')
+                toast.error("Login to view your bookings");
+        }else if(res.data.message==="deleted"){
+            toast.success("Cancelled successfully")
         }
         setLoader(false)
     }
@@ -23,6 +27,7 @@ function MyBookings() {
             const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/bookings`,{withCredentials:true});
             if(res.data.message==="No token, access denied!"){
                 navigate('/login')
+                toast.error("Login to view your bookings");
             }
             setBooking(res.data.bookings);
         }
@@ -39,7 +44,7 @@ function MyBookings() {
             return <div key={book._id} className='card'>
             <div>
                 <p><strong>Booking ID:</strong> {book._id}</p>
-                <p><strong>Provider ID:</strong> {book.providerId}</p>
+                <p><strong>Service ID:</strong> {book.serviceId}</p>
                 <p><strong>User ID:</strong> {book.userId}</p>
                 <div className='flex'>
                     <strong>Address: </strong>

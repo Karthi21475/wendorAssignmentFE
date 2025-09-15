@@ -3,10 +3,10 @@ import "../styles/SlotPicker.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import {toast} from 'react-toastify';
 function SlotPicker({serviceId, days, slots }) {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSlot, setSelectedSlot] = useState(null);
-    const [error,setError]=useState('');
     const [loader,setLoader]=useState(false);
     const navigate=useNavigate();
 
@@ -20,15 +20,19 @@ function SlotPicker({serviceId, days, slots }) {
             },{withCredentials:true});
             if(res.data.message==="No token, access denied!"){
                 navigate('/login')
+                toast.warn("login first to continue with booking a slot.")
             }
             else if(res.data.message==="Can't book another slot while a slot is already booked"){
-                setError("Can't book another slot while a slot is already booked");
+                toast.error(res.data.message);
+            }else if(res.data.message==="Booking confirmed"){
+                toast.success(res.data.message);
+                navigate("/services")
             }
-            navigate('/my-bookings');
-            } catch (err) {
-                console.log(err);
-            }
-            setLoader(false);
+        } catch (err) {
+            toast.error("something went wrong")
+            console.log(err);
+        }
+        setLoader(false);
     };
 
     return (
@@ -67,7 +71,6 @@ function SlotPicker({serviceId, days, slots }) {
             ))}
             </div>
         )}
-        {error.length>0 && <p className="error" >{error}</p>}
         <button
             className="book-btn"
             disabled={!selectedDay || !selectedSlot}
